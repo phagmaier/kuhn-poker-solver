@@ -72,6 +72,10 @@ void Tree::run_cfrm() {
     for (int i=0;i<iterations;++i) {
         calc_regret(left);
         calc_regret(right);
+        //std::thread l(&Tree::calc_regret,this, left);
+        //std::thread r(&Tree::calc_regret, this,right);
+        //l.join();
+        //r.join();
         gen_regrets(left, right);
         update_strategy(left,right);
         //std::cout << "\nREGRETS:\n\n";
