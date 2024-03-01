@@ -54,12 +54,7 @@ void Tree::gen_regrets(Node *l, Node *r) {
                 total = actual_l * l->get_strat(card1) + actual_r * r->get_strat(card1);
                 l->add_regret(card1, actual_l-total);
                 r->add_regret(card1, actual_r-total);
-                }
-
-            }
-        }
-
-    }
+                }}}}
 
 
 void Tree::run_cfrm() {
@@ -69,12 +64,7 @@ void Tree::run_cfrm() {
         calc_regret(right);
         gen_regrets(left, right);
         update_strategy(left,right);
-        //std::cout << "\nREGRETS:\n\n";
-        //print_regrets(left);
-        //print_regrets(right);
     }
-    //print_strats(left);
-    //print_strats(right);
     std::cout << "\n";
     get_final_strat(left,right);
     print_strats(left);
@@ -86,20 +76,17 @@ void Tree::calc_regret(Node *node) {
     if (node->get_left()){
         calc_regret(node->get_left());
         calc_regret(node->get_right());
-    }
-    if (node->is_leaf()){
-        node->leaf_ev();
-    }
-    else{
-        node->gen_regrets();
-    }
+  }
+
+    if (node->is_leaf()){node->leaf_ev();}
+
+    else{node->gen_regrets();}
 }
 
 void Tree::print_regrets(Node *node) {
     if (node->get_left()){
         print_regrets(node->get_left());
-        print_regrets(node->get_right());
-    }
+        print_regrets(node->get_right());}
     node->print_regret();
 }
 
@@ -115,9 +102,8 @@ void Tree::normalize(Node *l, Node *r) {
         }
         else{
             l->update_strat(i, temp_l/total);
-            r->update_strat(i, temp_r/total);
+            r->update_strat(i, temp_r/total);}
         }
-    }
 }
 
 void Tree::print_strats(Node *node) {
@@ -130,7 +116,6 @@ void Tree::print_strats(Node *node) {
 
 void Tree::get_final_strat(Node *node_l, Node *node_r) {
     if (node_l){
-
         get_final_strat(node_l->get_left(), node_l->get_right());
         get_final_strat(node_r->get_left(), node_r->get_right());
         double l;
@@ -159,5 +144,4 @@ void Tree::update_strategy(Node *l, Node *r) {
             update_strategy(l->get_left(),l->get_right());}
         if (r->get_left()){
             update_strategy(r->get_left(), r->get_right());}
-
 }
