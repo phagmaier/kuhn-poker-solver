@@ -12,26 +12,28 @@ class Node {
 public:
     Node(bool bet, std::string name);
     double get_ev(int card1, int card2);
-    bool is_leaf();
-    bool is_p1();
-    bool bet_or_check() const;
-    Node *get_left();
-    Node *get_right();
-    Node *get_parent();
-    std::string get_name();
+    inline bool is_leaf() {return left == nullptr;}
+    inline bool is_p1() {return name.length() % 2 == 1;}
+    inline bool bet_or_check() const {return bet;}
+    inline Node *get_left() {return left;}
+    inline Node *get_right() {return right;};
+    inline Node *get_parent() {return parent;}
+    inline std::string get_name() {return name;}    
     void make_children();
-    double get_strat(int card1);
+    inline double get_strat(int card1) {return strat[card1];}
     bool is_terminal();
     void print_node();
-    void add_regret(int index, double val); //adds to regrets
+   inline void add_regret(int index, double val) {regrets[index] += val;} 
     void print_regret();
     void gen_regrets();
     void print_ev();
     void update_strat(int index, double new_strat); // also increases the strat sum
-    void set_strat(int index, double new_strat);
-    double get_regret(int index);
+    inline void set_strat(int index, double new_strat) {strat[index] = new_strat;}
+    inline double get_regret(int index) {return regrets[index];}
     void print_strat();
-    double get_strat_sum(int index);
+    inline double get_strat_sum(int index) {return strat_sum[index];}
+
+
     void leaf_ev();
 private:
 

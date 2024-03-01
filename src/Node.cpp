@@ -34,18 +34,6 @@ Node::Node(bool bet, std::string name) : bet{bet}, name{name} {
     }
 }
 
-bool Node::is_p1() {
-    return name.length() % 2 == 1;
-}
-
-bool Node::bet_or_check() const {
-    return bet;
-}
-
-bool Node::is_leaf() {
-    return left == nullptr;
-}
-
 void Node::leaf_ev() {
     if (parent->bet_or_check() && !bet){
         for (int i=0;i<3;++i){
@@ -73,35 +61,14 @@ void Node::calc_potsize() {
     ? 2:1;
 }
 
-std::string Node::get_name() {
-    return name;
-}
-
-
 void Node::make_children() {
     left = new Node(false, name+'c', this);
     right = new Node(true, name+'b', this);
 }
 
-Node *Node::get_left() {
-    return left;
-}
-
-Node *Node::get_right() {
-    return right;
-}
-
-Node *Node::get_parent() {
-    return parent;
-}
-
 
 double Node::get_ev(int card1, int card2) {
     return ev[card1][card2];
-}
-
-double Node::get_strat(int card1) {
-    return strat[card1];
 }
 
 
@@ -137,10 +104,6 @@ void Node::gen_regrets() {
 
 }
 
-void Node::add_regret(int index, double val) {
-    regrets[index] += val;
-}
-
 
 void Node::print_regret() {
     print_node();
@@ -166,13 +129,6 @@ void Node::update_strat(int index, double new_strat) {
     strat_sum[index] += new_strat;
 }
 
-void Node::set_strat(int index, double new_strat) {
-    strat[index] = new_strat;
-}
-
-double Node::get_regret(int index) {
-    return regrets[index];
-}
 
 void Node::print_strat() {
     std::cout << "The strategy for: " << name << ": ";
@@ -181,10 +137,6 @@ void Node::print_strat() {
         std::cout << get_strat(i) << ", ";
     }
     std::cout << "\n";
-}
-
-double Node::get_strat_sum(int index) {
-    return strat_sum[index];
 }
 
 
