@@ -33,24 +33,9 @@ Node::Node(bool bet, std::string name) : bet{bet}, name{name} {
         }
     }
 }
-void Node::calc_ev() {
-    if (is_leaf()){
-        leaf_ev();
-    }
-    else{
-        for (int i=0; i<3;++i){
-            for (int x=0;x<3;++x){
-                if (i!=x){
-                    ev[i][x] =get_ev_scaled(i,x);
-                }
-            }
-        }
-    }
-}
 
 bool Node::is_p1() {
     return name.length() % 2 == 1;
-
 }
 
 bool Node::bet_or_check() const {
@@ -62,7 +47,6 @@ bool Node::is_leaf() {
 }
 
 void Node::leaf_ev() {
-    //double value = is_p1() ? -1 : 1;
     if (parent->bet_or_check() && !bet){
         for (int i=0;i<3;++i){
             for (int x=0;x<3;++x){
@@ -72,7 +56,6 @@ void Node::leaf_ev() {
         }
     }
     else{
-        //double scaler = is_p1() ? 1 : -1;
         for (int i=0;i<3;++i){
             for (int x=0;x<3;++x){
                 if (i!=x){
@@ -81,7 +64,6 @@ void Node::leaf_ev() {
         }
 
     }
-
 }
 
 void Node::calc_potsize() {
@@ -114,15 +96,8 @@ Node *Node::get_parent() {
 }
 
 
-//NOTE THIS ALWAYS GIVES THE NEGATIVE EV
 double Node::get_ev(int card1, int card2) {
     return ev[card1][card2];
-}
-
-//NOTE THAT THE RESULT IS ALWAYS WHAT IF PLAYER 1 HAD X AND PLAYER 2 HAD Y
-double Node::get_ev_scaled(int card1, int card2) {
-        return left->get_ev(card1,card2) * left->get_strat(card1) +
-        right->get_ev(card1,card2) * right->get_strat(card1);
 }
 
 double Node::get_strat(int card1) {
@@ -142,17 +117,13 @@ void Node::print_node() {
 }
 
 
-//Remember all ev is stored as if we were only considering P1
 void Node::gen_regrets() {
-    //int card1;
-    //int card2;
     double l;
     double r;
     double total;
 
     for (int card1=0;card1<3;++card1){
         for (int card2=0; card2<3; ++card2){
-            //just added this
             if (card1!=card2) {
                 l = left->get_ev(card1, card2);
                 r = right->get_ev(card1, card2);
@@ -163,39 +134,6 @@ void Node::gen_regrets() {
             }
         }
     }
-
-    /*
-    int card1;
-    int card2;
-    //flipped because you're setting ev for neighbor
-    double scaler = is_p1() ? -1:1;
-    for (int i=0; i<3; ++i){
-        for (int x=0; x<3;++x){
-            if (x!=i){
-
-                if (is_p1()){
-                    card1 = i;
-                    card2 = x;
-                }
-                else{
-                    card1 = x;
-                    card2 = i;
-                }
-                //get the ev of the previous node subtract that from our total strat
-                //scale by either negative one or nothing and also influcne of previosu
-                //node i.e how likley this is to occur against the other card
-
-                //THIS MAY BE WRONG IDK RUN IT
-                double regret_l = (left->get_ev(i,x) - ev[i][x])
-                                  * strat[x] * scaler;
-                double regret_r = (right->get_ev(i,x) - ev[i][x])
-                                  * strat[x] * scaler;
-                left->add_regret(card2, regret_l);
-                right->add_regret(card2, regret_r);
-            }
-        }
-    }
-     */
 
 }
 

@@ -12,7 +12,6 @@ public:
     Node(bool bet, std::string name);
     double get_ev(int card1, int card2);
     bool is_leaf();
-    void calc_ev();
     bool is_p1();
     bool bet_or_check() const;
     Node *get_left();
@@ -20,7 +19,6 @@ public:
     Node *get_parent();
     std::string get_name();
     void make_children();
-    double get_ev_scaled(int card1, int card2);
     double get_strat(int card1);
     bool is_terminal();
     void print_node();

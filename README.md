@@ -1,6 +1,11 @@
 # KUHN POKER SOLVER IN C++
 
 ## SUMMARY
+Solving Kuhn poker in c++ by creating a binary tree
+where each node represents a decision in the game tree. 
+Using a counter factual regret minimization algorithm in
+order to reduce the regret and find the Nash equilibrium.
+Hoping to expand this out into a actual poker solver.
 
 ### KUHN POKER DESCRIPTION
 Kuhn poker is a simplified version of poker. There are only three
@@ -62,4 +67,22 @@ children. We reverse it because if player 1 folds this is a positive
 result for player 2 and we flip the axis so as to avoid duplicate 
 calculations so we don't need to store the result of K v Q and Q v K.
 
+### FILES
 
+
+| FILE      | DESCRIPTION         |
+| --------- | ------------------- |
+| [main.cpp](main.cpp) | runs the program |
+| [Node.cpp](Node.cpp) | Contains each decision node. Stores the current strategy 
+for each card along with the expected value of each card against any other card |
+| [Tree.cpp](Tree.cpp) | Creates a game tree and generates the nodes. Responsible for calling the proper
+functions and running the CFRM algo |
+| [stupid_python_version.py] | A manual way of implimenting the algorithm. Included it if anyone wants to see
+a very straightforward approach of how to solve the problem before it is abstracted | 
+
+
+### TO DO
+
+1. Clean up code 
+2. add threads (not for performance reasons but to steal logic for when I expand this out to a full solver) 
+3. Think of more things to do so I can procrastinate making a real poker solver

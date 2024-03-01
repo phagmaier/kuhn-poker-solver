@@ -66,7 +66,6 @@ void Tree::gen_regrets(Node *l, Node *r) {
     }
 
 
-//almost perfect but something is a tiny bit wrong with cc
 void Tree::run_cfrm() {
     int iterations = 10000;
     for (int i=0;i<iterations;++i) {
@@ -92,19 +91,6 @@ void Tree::run_cfrm() {
 
 
 void Tree::calc_regret(Node *node) {
-   /*
-    if (node->get_left()){
-        calc_regret(node->get_left());
-        calc_regret(node->get_right());
-    }
-    if (node->is_leaf()){
-        node->calc_ev();
-    }
-    else{
-        //node->calc_ev();
-        node->gen_regrets();
-    }
-     */
     if (node->get_left()){
         calc_regret(node->get_left());
         calc_regret(node->get_right());
@@ -113,7 +99,6 @@ void Tree::calc_regret(Node *node) {
         node->leaf_ev();
     }
     else{
-        //node->calc_ev();
         node->gen_regrets();
     }
 }
@@ -176,8 +161,6 @@ void Tree::get_final_strat(Node *node_l, Node *node_r) {
     }
 }
 
-//think this doesn't do check check fix this think because
-//it doesn't normalize it
 void Tree::update_strategy(Node *l, Node *r) {
         normalize(l, r);
         if (l->get_left()){
