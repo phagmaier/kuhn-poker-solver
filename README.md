@@ -70,15 +70,12 @@ calculations so we don't need to store the result of K v Q and Q v K.
 ### FILES
 
 
-| FILE      | DESCRIPTION         |
-| --------- | ------------------- |
-| [main.cpp](main.cpp) | runs the program |
-| [Node.cpp](Node.cpp) | Contains each decision node. Stores the current strategy 
-for each card along with the expected value of each card against any other card |
-| [Tree.cpp](Tree.cpp) | Creates a game tree and generates the nodes. Responsible for calling the proper
-functions and running the CFRM algo |
-| [stupid_python_version.py] | A manual way of implimenting the algorithm. Included it if anyone wants to see
-a very straightforward approach of how to solve the problem before it is abstracted | 
+| FILE                                                                                                                                                                                                                                                                        | DESCRIPTION                                                                                                                                                        |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [main.cpp](main.cpp)                                                                                                                                                                                                                                                        | Runs the program                                                                                                                                                   |
+| [Node.cpp](Node.cpp)                                                                                                                                                                                                                                                        | Contains each decision node. Stores the current strategory for each card along with the expected value of each card against any other card                         |
+| [Tree.cpp](Tree.cpp)                                                                                                                                                                                                                                                        | Creates a game tree and generates the nodes. Responsible for calling the proper functions and running the CFRM algo                                                |
+| [stupid_python_version.py](stupid_python_version.py) | A manual way of implimenting the algorithm. Included it if anyone wants to see a very straightforward approach of how to solve the problem before it is abstracted | 
 
 
 ### TO DO
