@@ -1,10 +1,19 @@
 cmake_minimum_required(VERSION 3.26)
-project(Final)
+project(Kuhn_Poker)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Final main.cpp
-        Node.cpp
-        Node.h
-        Tree.cpp
-        Tree.h)
+set(SOURCE_FILES
+    src/main.cpp
+    src/Node.cpp
+    src/Tree.cpp
+)
+
+add_executable(kuhnpoker ${SOURCE_FILES})
+
+# Set compiler optimization flags
+target_compile_options(kuhnpoker PRIVATE -O3)  # Replace -O3 with your desired optimization level
+
+# Set C++ features (C++20)
+target_compile_features(kuhnpoker PRIVATE cxx_std_20)
+

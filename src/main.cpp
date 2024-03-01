@@ -2,6 +2,7 @@
 #include "Node.h"
 #include <string>
 #include "Tree.h"
+#include <thread>
 
 
 void func(){

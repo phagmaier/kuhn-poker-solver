@@ -6,6 +6,7 @@
 #define FINAL_NODE_H
 #include <iostream>
 #include <string>
+#include <thread>
 
 class Node {
 public:

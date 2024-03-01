@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.26"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Final::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Final-Debug-b323481dccaeaa714181.json",
+					"jsonFile" : "target-Final-7c8178b80aad5fcba2a8.json",
 					"name" : "Final",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/parkerhagmaier/Desktop/Final/cmake-build-debug",
-		"source" : "/Users/parkerhagmaier/Desktop/Final"
+		"build" : "/Users/parkerhagmaier/desktop/Final",
+		"source" : "/Users/parkerhagmaier/desktop/Final"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 5
+		"minor" : 6
 	}
 }
