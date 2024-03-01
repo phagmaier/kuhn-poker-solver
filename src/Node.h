@@ -1,7 +1,3 @@
-//
-// Created by Parker Hagmaier on 2/28/24.
-//
-
 #ifndef FINAL_NODE_H
 #define FINAL_NODE_H
 #include <iostream>
@@ -23,7 +19,7 @@ public:
     inline double get_strat(int card1) {return strat[card1];}
     bool is_terminal();
     void print_node();
-   inline void add_regret(int index, double val) {regrets[index] += val;} 
+    inline void add_regret(int index, double val) {regrets[index] += val;} 
     void print_regret();
     void gen_regrets();
     void print_ev();

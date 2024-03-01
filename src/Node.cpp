@@ -1,9 +1,4 @@
-//
-// Created by Parker Hagmaier on 2/28/24.
-//
-
 #include "Node.h"
-
 
 Node::Node(bool bet, std::string name, Node *parent): bet{bet}, name{name}, parent{parent} {
     left = nullptr;

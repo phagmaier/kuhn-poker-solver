@@ -1,7 +1,3 @@
-//
-// Created by Parker Hagmaier on 2/28/24.
-//
-
 #include "Tree.h"
 
 Tree::Tree() {
