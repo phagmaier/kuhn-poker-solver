@@ -11,9 +11,7 @@ set(SOURCE_FILES
 
 add_executable(kuhnpoker ${SOURCE_FILES})
 
-# Set compiler optimization flags
-target_compile_options(kuhnpoker PRIVATE -O3)  # Replace -O3 with your desired optimization level
+target_compile_options(kuhnpoker PRIVATE -O3)
 
-# Set C++ features (C++20)
 target_compile_features(kuhnpoker PRIVATE cxx_std_20)
 
